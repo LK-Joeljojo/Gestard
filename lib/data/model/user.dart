@@ -16,8 +16,22 @@ class User {
   DateTime createdAt = DateTime.now();
   DateTime updateAt = DateTime.now();
 }
+class UserMapper {
 
-UserEntity toEntity(User model) {
+  //entity vers model 
+  static User toModel(UserEntity entity){
+    final model = User()
+    ..id = entity.id
+    ..fullName = entity.fullName
+    ..email = entity.email
+    ..role = entity.role;
+    return model ;
+
+  }
+
+
+  //model vers entity
+  static UserEntity toEntity(User model) {
   return UserEntity(
     id: model.id,
     fullName: model.fullName,
@@ -25,3 +39,8 @@ UserEntity toEntity(User model) {
     role: model.role,
   );
 }
+}
+
+
+
+
